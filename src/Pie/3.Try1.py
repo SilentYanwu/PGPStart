@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 1000, 800
 FPS = 60
 TITLE = "会动的圆"
 BG_COLOR = (129,216,208)
-CIRCLE_COLOR = (255, 255, 0)
+CIRCLE_COLOR = (255, 255, 50)
 LINE_WIDTH = 10
 
 # ---------- 初始化 ----------
