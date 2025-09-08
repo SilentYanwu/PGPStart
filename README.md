@@ -24,6 +24,8 @@ PGSTART/
 
 │ └── Pie/ # 第二章Pie游戏代码
 
+│ └── Trivia/ # 第三章Trivia游戏代码
+
 └── README.md # 项目说明
 
 **3️⃣ 学习路线**
