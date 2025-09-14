@@ -9,6 +9,7 @@ if language in ["english", "en", "eng"]:
     print("\nMAD LIB GAME")
     print("Enter answers to the following prompts\n")
     
+    # Python的input()，其中括号内是输入前的内容
     guy = input("Name of a famous man: ")
     girl = input("Name of a famous woman: ")
     food = input("Your favorite food (plural): ")
