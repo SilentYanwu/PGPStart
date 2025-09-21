@@ -5,6 +5,8 @@
 🎯 项目状态
 2025年8月19日创建PGPSTART个人学习项目（Python Game Programming Start）
 2025年8月19日完成第二章Pie游戏的编写
+2025年9月15日完成第三章Trivia游戏的编写
+
 
 **1️⃣ 30 秒跑起来**
 bash
@@ -25,6 +27,8 @@ PGSTART/
 │ └── Pie/ # 第二章Pie游戏代码
 
 │ └── Trivia/ # 第三章Trivia游戏代码
+
+│ └── Bomb Catcher # 第四章Bomb Catcher游戏代码
 
 └── README.md # 项目说明
 
