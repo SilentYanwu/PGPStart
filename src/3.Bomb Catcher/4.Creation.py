@@ -10,7 +10,7 @@ def print_text(font, x, y, text, color=(255,255,255)):
     imgText = font.render(text, True, color)
     screen.blit(imgText, (x,y))
     
-def set_vel_x(a=-1,b=1):
+def set_vel_x(a=-0.5,b=0.5):
     # 设置炸弹水平速度的函数
     return random.uniform(a, b)
 
@@ -26,6 +26,7 @@ white = 255,255,255  # 定义颜色：白色
 red = 220, 50, 50  # 定义颜色：红色
 yellow = 230,230,50  # 定义颜色：黄色
 black = 0,0,0  # 定义颜色：黑色
+brown = 148,106,44 # 定义颜色：棕色
 Lives=5
 lives = Lives  # 玩家生命值
 score = 0  # 玩家得分
@@ -108,11 +109,18 @@ while True:
                 bomb_y = -50
                 vel_x = set_vel_x()
 
-        
-        # 绘制炸弹（带黑色边框的黄色圆形）
-        pygame.draw.circle(screen, black, (int(bomb_x), int(bomb_y)), 30, 0)
-        pygame.draw.circle(screen, yellow, (int(bomb_x), int(bomb_y)), 30, 0)
 
+        pygame.draw.circle(screen, yellow, (int(bomb_x), int(bomb_y)), 30, 0)  # 填充
+        pygame.draw.circle(screen, black, (int(bomb_x), int(bomb_y)), 30, 2)   # 边框
+
+        # 引线主体
+        line_color = (80, 80, 80)  # 深灰色
+        pygame.draw.line(screen, line_color, 
+                        (int(bomb_x), int(bomb_y) - 30), 
+                        (int(bomb_x), int(bomb_y) - 70), 6)
+        # 引线末端（燃烧效果）
+        pygame.draw.circle(screen, (200, 100, 0), (int(bomb_x), int(bomb_y) - 72), 4)  # 橙色火星
+        
         # 设置篮子位置
         pos_x = mouse_x  # 篮子跟随鼠标移动
         if pos_x < 0:
