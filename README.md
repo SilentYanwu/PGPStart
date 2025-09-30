@@ -28,7 +28,13 @@ PGSTART/
 
 │ └── Trivia/ # 第三章Trivia游戏代码
 
-│ └── Bomb Catcher # 第四章Bomb Catcher游戏代码
+│ └── Bomb Catcher/ # 第四章Bomb Catcher游戏代码
+
+│ └── Analog Clock/ # 第五章Analog Clock游戏代码
+
+│ └── Orbiting Spaceship/ # 第六章Orbiting Spaceship游戏代码
+
+│ └── Try 1/ # 一个尝试的游戏代码
 
 └── README.md # 项目说明
 
