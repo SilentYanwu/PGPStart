@@ -32,7 +32,7 @@ def print_text(font, x, y, text, color=(255,255,255)):
     imgText = font.render(text, True, color)  # 渲染文本为图像
     screen.blit(imgText, (x,y))  # 在指定位置绘制文本
 
-# wrap_angle函数 - 将角度限制在0-360度范围内
+# wrap_angle函数 - 将角度限制在0-360度范围内，规范角度
 def wrap_angle(angle):
     return angle % 360
 
@@ -92,8 +92,6 @@ while True:
     # 旋转飞船 - 根据运动方向调整飞船朝向
     delta_x = ( pos.x - old_pos.x )  # x方向变化量
     delta_y = ( pos.y - old_pos.y )  # y方向变化量
-
-    
     # atan2函数作用:返回点 (delta_y, delta_x) 与 x 轴正方向的夹角（弧度），范围[-π, π]
     # 飞船一
     rangle = math.atan2(delta_y, delta_x)  # 计算运动方向的角度（弧度）
