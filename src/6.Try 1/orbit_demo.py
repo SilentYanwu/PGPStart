@@ -63,12 +63,18 @@ class OrbitDemo:
         mouse_pos = pygame.mouse.get_pos()
         if self.button1.update(mouse_pos, mouse_click):
             self.mode = 1
-            self.radius2 = 250
             self.ship2_scale = 1
+            if self.radius2==250:
+                self.radius2 = 250
+            else:
+                self.radius2 = 150
+            self.circle_effect.start(pygame.time.get_ticks())
             self.button1.reset_click()
         
         if self.button2.update(mouse_pos, mouse_click):
             self.mode = 2
+            self.radius2 = 250
+            self.ship2_scale = 0.8
             self.circle_effect.start(pygame.time.get_ticks())
             self.button2.reset_click()
         
@@ -78,7 +84,7 @@ class OrbitDemo:
         """更新飞船位置和状态"""
         current_time = pygame.time.get_ticks()
         
-        # 模式2的特殊处理：圆形特效
+        # 按下按钮启动模式2的特殊处理
         if self.mode == 2:
             if self.circle_effect.update(current_time):
                 # 特效期间保持原有运动
@@ -86,14 +92,24 @@ class OrbitDemo:
                 self.angle2 = wrap_angle(self.angle2 - 0.1)
             else:
                 # 特效结束后切换到垂直飞行模式
-                self.radius2 = 200
-                self.ship2_scale = 0.6  # 飞船2缩小
+                self.radius2 = 150
+                self.ship2_scale = 0.6
                 self.angle1 = wrap_angle(self.angle1 - 0.1)
                 self.angle2 = self.angle1  # 相同角度
         else:
-            # 模式1：太极绕行
+            # 按下按钮改变到模式1：太极绕行
+            if self.circle_effect.update(current_time):
+                # 特效期间保持原有运动
+                self.angle1 = wrap_angle(self.angle1 - 0.1)
+                self.angle2 = wrap_angle(self.angle2 - 0.1)
+                
+            else:
+                self.angle1 = wrap_angle(self.angle1 - 0.1)
+                self.angle2 = wrap_angle(self.angle1 +180)  
+                self.radius2 = self.radius1  # 保持相同轨道半径
+            # 模式1：太极绕行的正常运动
             self.angle1 = wrap_angle(self.angle1 - 0.1)
-            self.angle2 = wrap_angle(self.angle2 - 0.1)
+            self.angle2 = wrap_angle(self.angle2 - 0.1) 
         
         # 计算飞船位置
         self.pos1.x = math.sin(math.radians(self.angle1)) * self.radius1

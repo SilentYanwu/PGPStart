@@ -6,17 +6,19 @@ import pygame
 class Button:
     def __init__(self, x, y, width, height, text, font, normal_color=(100, 100, 200), 
                  hover_color=(150, 150, 255), text_color=(255, 255, 255)):
+        # Rect(left, top, width, height)
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
         self.font = font
-        self.normal_color = normal_color
-        self.hover_color = hover_color
-        self.text_color = text_color
+        self.normal_color = normal_color # 正常状态
+        self.hover_color = hover_color # 悬停状态
+        self.text_color = text_color # 文字颜色
         self.is_hovered = False
         self.clicked = False
     
     def draw(self, screen):
         """绘制按钮"""
+        # 三元运算符 color先判断是否是悬停状态
         color = self.hover_color if self.is_hovered else self.normal_color
         pygame.draw.rect(screen, color, self.rect)
         pygame.draw.rect(screen, (255, 255, 255), self.rect, 2)  # 白色边框

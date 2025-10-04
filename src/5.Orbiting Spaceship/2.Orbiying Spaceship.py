@@ -54,6 +54,7 @@ space = pygame.image.load(str(space_path)).convert_alpha()  # 加载星空背景
 planet = pygame.image.load(str(planet_path)).convert_alpha()  # 加载行星图片，支持透明通道
 ship = pygame.image.load(str(ship_path)).convert_alpha()  # 加载飞船图片，支持透明通道
 ship2 =pygame.image.load(str(ship2_path)).convert_alpha()  # 加载飞船图片，支持透明通道
+
 # 调整飞船大小 - 缩小为原来的一半
 width,height = ship.get_size()
 ship = pygame.transform.smoothscale(ship, (width//2, height//2))
@@ -83,19 +84,18 @@ while True:
     # 移动飞船 - 沿着圆形轨道运动
     angle = wrap_angle(angle - 0.1)  # 角度递减，逆时针旋转
 
-    
     # 根据角度计算飞船在轨道上的位置（使用三角函数）
     pos.x = math.sin( math.radians(angle) ) * radius
     pos.y = math.cos( math.radians(angle) ) * radius
 
-
     # 旋转飞船 - 根据运动方向调整飞船朝向
     delta_x = ( pos.x - old_pos.x )  # x方向变化量
     delta_y = ( pos.y - old_pos.y )  # y方向变化量
+    
     # atan2函数作用:返回点 (delta_y, delta_x) 与 x 轴正方向的夹角（弧度），范围[-π, π]
-    # 飞船一
     rangle = math.atan2(delta_y, delta_x)  # 计算运动方向的角度（弧度）
     rangled = wrap_angle( -math.degrees(rangle) )  # 转换为角度并包装
+    
     # 用法 pygame.transform.rotate(图像, 角度) 旋转图像，角度为逆时针方向
     scratch_ship = pygame.transform.rotate(ship, rangled)  # 旋转飞船图像
     

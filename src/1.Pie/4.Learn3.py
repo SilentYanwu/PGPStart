@@ -45,6 +45,7 @@ while running:
     color = (255,0,0)
     width = 5
     pos = (pos_x, pos_y, 100, 100)  # 添加括号使元组更清晰
+    # rect（surface, color, rect, width=0）-> Rect
     pygame.draw.rect(screen, color, pos, width)
     
     pygame.display.flip()
